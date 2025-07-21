@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advice Simulator 🤓</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Advice Simulator 🤖</h1>
+    <input type="text" id="question" placeholder="Ask me anything..." />
+    <button onclick="getAdvice()">Get Advice</button>
+    <p id="response"></p>
+  </div>
+
+  <script>
+    async function getAdvice() {
+      const question = document.getElementById("question").value;
+      const responseDiv = document.getElementById("response");
+      responseDiv.innerHTML = "Thinking... 🤔";
+
+      const res = await fetch("/get-advice", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({question})
+      });
+
+      const data = await res.json();
+      responseDiv.innerHTML = data.advice;
+    }
+  </script>
+</body>
+</html>
