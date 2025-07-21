@@ -5,7 +5,7 @@ A humorous and chaotic AI web app that gives funny advice and daily Gen Z–styl
 
 ## 🚀 Live Demo
 
-🌐 [https://advicesim2.herokuapp.com](https://advicesim2.herokuapp.com)
+🌐 [[https://advicesim2.herokuapp.com](https://advicesim2-eb47c637973e.herokuapp.com/)]([https://advicesim2.herokuapp.com](https://advicesim2-eb47c637973e.herokuapp.com/))
 
 ## 📸 Preview
 
