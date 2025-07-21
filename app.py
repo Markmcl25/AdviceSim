@@ -1,11 +1,6 @@
-import os
 from flask import Flask, render_template, request, jsonify
-from openai import OpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # New client object for v1+
+import g4f
+import g4f.models
 
 app = Flask(__name__)
 
@@ -22,17 +17,14 @@ def get_advice():
     Respond with funny but somewhat helpful advice."""
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.gpt_4,  # You can replace this with another model name like gpt_4o or llama_3_70b
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=150,
-            temperature=0.9
         )
-        advice = response.choices[0].message.content
-        return jsonify({"advice": advice})
+        return jsonify({"advice": response})
     except Exception as e:
-        print("Error from OpenAI:", e)
-        return jsonify({"advice": "Bollox! 🤖 Something went wrong. Try again later."})
+        print("Error using g4f:", e)
+        return jsonify({"advice": "Oops! 🤖 Something funny went wrong. Try again soon!"})
 
 if __name__ == "__main__":
     app.run(debug=True)
