@@ -68,10 +68,14 @@ select {
   input {
     width: 100%;
     margin: 10px 0;
+    font-size: 1.2rem;
+    height: 55px;
   }
 
   button {
     width: 100%;
+    font-size: 1rem;
+    padding: 14px;
   }
 
   h1 {
